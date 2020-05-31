@@ -17,3 +17,10 @@ how_many(Answer,[Head|Tail],N) :- New_N is N+1, how_many(Answer,Tail,New_N).
 % Reverse a list
 my_reverse(Temp_list,[],Temp_list).
 my_reverse(Answer,[Head|Tail],Temp_list) :- my_reverse(Answer,Tail,[Head|Temp_list]).
+
+% Find out whether a list is a palindrome
+is_palindrome(List) :- reverse(List,List).
+
+% Duplicate the elements of a list.
+dupli(Answer,[],Answer).
+dupli(Answer,[Head|Tail], Temp) :-  append(Temp,[Head,Head],New_Temp), dupli(Answer, Tail, New_Temp).
