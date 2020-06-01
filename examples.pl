@@ -24,3 +24,14 @@ is_palindrome(List) :- reverse(List,List).
 % Duplicate the elements of a list.
 dupli(Answer,[],Answer).
 dupli(Answer,[Head|Tail], Temp) :-  append(Temp,[Head,Head],New_Temp), dupli(Answer, Tail, New_Temp).
+
+% Flatten a nested list structure.
+my_flatten(X,[X]) :- \+ is_list(X).
+my_flatten([],[]).
+my_flatten([Head|Tail],Temp_List) :- my_flatten(Head,Temp_List1), my_flatten(Tail,Temp_List2), append(Temp_List1,Temp_List2,Temp_List).
+
+% Eliminate consecutive duplicates of list elements.
+compress([],[]).
+compress([X],[X]).
+compress([X,X|Xs],Zs) :- compress([X|Xs],Zs).
+compress([X,Y|Ys],Zs) :- X \= Y, compress([Y|Ys],Zs_prime), append([X], Zs_prime, Zs) .
