@@ -34,4 +34,5 @@ my_flatten([Head|Tail],Temp_List) :- my_flatten(Head,Temp_List1), my_flatten(Tai
 compress([],[]).
 compress([X],[X]).
 compress([X,X|Xs],Zs) :- compress([X|Xs],Zs).
-compress([X,Y|Ys],Zs) :- X \= Y, compress([Y|Ys],Zs_prime), append([X], Zs_prime, Zs) .
+compress([X,Y|Ys],Zs) :- X \= Y, compress([Y|Ys],Zs_prime), append([X], Zs_prime, Zs).
+
